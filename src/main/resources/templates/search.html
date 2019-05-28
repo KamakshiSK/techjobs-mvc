@@ -17,7 +17,7 @@
             <span th:each="column : ${columns}">
                 <input
                         type="radio"
-                        name="searchType"
+                            name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
                         th:checked="${column.key == 'all'}"/>
@@ -38,6 +38,15 @@
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
+    <div th:if="${jobs}">
+    <h3 th:text="|${jobs.size()} Result(s):|">  </h3>
+    <table th:each="job : ${jobs}" class="job-listing">
+        <tr th:each="jobItem : ${job}">
+            <td th:text="${jobItem.key}"> </td>
+            <td th:text="${jobItem.value}"> </td>
+        </tr>
+    </table>
+    </div>
 </div>
 
 </body>
