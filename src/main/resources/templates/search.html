@@ -42,8 +42,11 @@
     <h3 th:text="|${jobs.size()} Result(s):|">  </h3>
     <table th:each="job : ${jobs}" class="job-listing">
         <tr th:each="jobItem : ${job}">
-            <td th:text="${jobItem.key}"> </td>
-            <td th:text="${jobItem.value}"> </td>
+                <!-- Bonus : Capitalization -->
+                <td th:text="${#strings.capitalizeWords(jobItem.key)}"> </td>
+                <!-- Bonus : In the search results listing and the listing of all jobs, make each value (except name)
+                hyperlinked to the listing of all jobs with that value.-->
+                <td><a th:href="@{/list/jobs(column=${jobItem.key},value=${jobItem.value})}" th:text="${jobItem.value}"></a></td>
         </tr>
     </table>
     </div>
